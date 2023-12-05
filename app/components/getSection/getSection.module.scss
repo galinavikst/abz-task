@@ -1,0 +1,43 @@
+@import "../../variables.scss";
+
+.getSection {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
+  button {
+    margin: 0 auto;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 29px;
+  }
+}
+
+/*  Smaller Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .getSection {
+    padding: 0 50px;
+  }
+}
+
+/* Tablet  */
+@media (min-width: 361px) and (max-width: 768px) {
+  .getSection {
+    padding: 0 30px;
+    ul {
+      gap: 16px;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .getSection {
+    padding: 0 15px;
+    ul {
+      gap: 20px;
+    }
+  }
+}

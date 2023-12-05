@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.button {
+  background: $primary-accent-color;
+  border-radius: 80px;
+  min-width: 100px;
+  max-width: fit-content;
+  padding: 4px 18px;
+  text-align: center;
+  transition: all 140ms ease-in;
+  font-family: inherit;
+  border: none;
+  color: $primary-text-color;
+  cursor: pointer;
+  &:disabled {
+    background: $disabled-btn-color;
+    color: #ffffffde;
+    &:hover,
+    &:focus {
+      background: $disabled-btn-color;
+      cursor: default;
+    }
+  }
+  &:hover,
+  &focus {
+    background: $hover-btn-color;
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../variables.scss";
+
+.header_wrapper {
+  background: $pure-white;
+}
+
+.header {
+  max-width: $app-max-width;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  div,
+  a {
+    display: flex;
+    align-items: center;
+  }
+  div {
+    gap: 10px;
+  }
+}
+
+/*  Smaller Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    padding: 17px 60px;
+  }
+}
+
+/* Tablet  */
+@media (min-width: 361px) and (max-width: 768px) {
+  .header {
+    padding: 17px 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .header {
+    padding: 17px 16px;
+  }
+}

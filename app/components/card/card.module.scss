@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+
+.card {
+  background-color: $pure-white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 16px;
+  width: 30%;
+  flex-grow: 1;
+  img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Tablet  */
+@media (min-width: 361px) and (max-width: 768px) {
+  .card {
+    width: 45%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .card {
+    width: 100%;
+  }
+}

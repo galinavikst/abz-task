@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.hero {
+  background-image: url("../../../public/hero.webp");
+  height: calc(100vh - 60px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: $pure-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 15px;
+  div {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+    p {
+      line-height: 162.5%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+/*  Smaller Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    div {
+      width: 50%;
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .hero {
+    div {
+      width: 100%;
+    }
+  }
+}

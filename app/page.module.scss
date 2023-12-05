@@ -1,0 +1,9 @@
+@import "./variables.scss";
+
+.main {
+  max-width: $app-max-width;
+  margin: 0 auto 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 140px;
+}

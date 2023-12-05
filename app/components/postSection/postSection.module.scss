@@ -1,0 +1,15 @@
+@import "../../variables.scss";
+
+.postSection {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Mobile */
+@media (max-width: 360px) {
+  .postSection {
+    padding: 0 16px;
+  }
+}
