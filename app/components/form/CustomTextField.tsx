@@ -6,7 +6,10 @@ import { FormControl, FormHelperText } from "@mui/material";
 import style from "./form.module.scss";
 import { useMask, type InputMaskProps } from "@react-input/mask";
 import { useAppDispatch, useAppSelector } from "@/app/redux/store";
-import { setInputGroup } from "@/app/redux/features/formSlice";
+import {
+  setInputGroup,
+  setValidStatuses,
+} from "@/app/redux/features/formSlice";
 import isValid from "./validation.js";
 
 const colors = {
@@ -90,8 +93,10 @@ export default function CustomTextField({
     const errorMessage = isValid[name](value);
     if (errorMessage) {
       setError({ input: name, text: errorMessage });
+      dispatch(setValidStatuses({ input: name, isValid: false }));
     } else {
       setError({ input: "", text: "" });
+      dispatch(setValidStatuses({ input: name, isValid: true }));
     }
 
     dispatch(setInputGroup({ ...values, [name]: value }));
@@ -106,7 +111,7 @@ export default function CustomTextField({
         value={values[name]}
         onChange={(e) => handleChange(name, e.target.value)}
         error={error.input === name}
-        //required
+        required
       />
       <FormHelperText
         classes={{

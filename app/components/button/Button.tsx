@@ -8,7 +8,13 @@ type ButtonProps = {
 };
 export default function Button({ text, onClick, disabled }: ButtonProps) {
   return (
-    <button disabled={disabled} onClick={onClick} className={styles.button}>
+    <button
+      disabled={disabled}
+      onClick={onClick}
+      className={`${styles.button} ${
+        disabled && text === "Show more" && styles.hidden
+      }`}
+    >
       {text}
     </button>
   );

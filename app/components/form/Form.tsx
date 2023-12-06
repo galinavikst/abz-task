@@ -14,7 +14,7 @@ import { setToken } from "@/app/redux/features/formSlice";
 
 export default function Form() {
   const dispatch = useAppDispatch();
-  const { inputGroup, photo, position, token } = useAppSelector(
+  const { inputGroup, photo, position, validStatuses } = useAppSelector(
     (state) => state.form
   );
 
@@ -23,7 +23,6 @@ export default function Form() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
     const { email, name, phone } = inputGroup;
 
     if (data) {
@@ -43,12 +42,14 @@ export default function Form() {
     }
   };
 
+  const isFormValid = Object.values(validStatuses).every((status) => status);
+
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <InputsGroup />
       <RadioGroup />
       <FileInput />
-      <Button disabled={false} text="Sign up" />
+      <Button disabled={!isFormValid} text="Sign up" />
     </form>
   );
 }

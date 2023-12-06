@@ -74,8 +74,8 @@ export const abzApi = createApi({
       query: () => "/positions",
     }),
 
-    getUsers: builder.query<IResponse, number>({
-      query: (page) => `/users/?page=${page}&count=${countByPage}`,
+    getUsers: builder.query<IResponse, void>({
+      query: () => `/users/?page=1&count=${countByPage}`,
     }),
   }),
 });

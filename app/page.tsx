@@ -6,8 +6,8 @@ import PostSection from "./components/postSection/PostSection";
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/* <Hero /> */}
-      {/* <GetSection /> */}
+      <Hero />
+      <GetSection />
       <PostSection />
     </main>
   );

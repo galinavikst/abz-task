@@ -10,13 +10,14 @@ import {
 import { useAppDispatch, useAppSelector } from "@/app/redux/store";
 import { setNextPage, setUsers } from "@/app/redux/features/usersSlice";
 import Card from "../card/Card";
+import Loader from "../Loader";
 
 export default function GetSection() {
   const [isDisabled, setIsDisabled] = useState(false);
   const dispatch = useAppDispatch();
   const { users, nextPage } = useAppSelector((state) => state.users);
 
-  const { data } = useGetUsersQuery(1);
+  const { data, isLoading } = useGetUsersQuery();
 
   useEffect(() => {
     if (data) {
@@ -48,8 +49,11 @@ export default function GetSection() {
     <section className={style.getSection}>
       <h2>Working with GET request</h2>
       <ul>
-        {users &&
-          users.map((user: UserResponse) => <Card key={user.id} user={user} />)}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          users.map((user: UserResponse) => <Card key={user.id} user={user} />)
+        )}
       </ul>
 
       <Button onClick={handleClick} disabled={isDisabled} text="Show more" />

@@ -3,7 +3,7 @@ import { useState, ChangeEvent } from "react";
 import styles from "./fileInput.module.scss";
 import isValid from "./validation.js";
 import { useAppDispatch } from "@/app/redux/store";
-import { setPhoto } from "@/app/redux/features/formSlice";
+import { setPhoto, setValidStatuses } from "@/app/redux/features/formSlice";
 
 export default function FileInput() {
   const dispatch = useAppDispatch();
@@ -24,10 +24,12 @@ export default function FileInput() {
     if (errorMessage) {
       console.log(errorMessage);
       setError({ isError: true, text: errorMessage });
+      dispatch(setValidStatuses({ input: "photo", isValid: false }));
       setFile(null);
       return;
     } else {
       setError({ isError: false, text: "" });
+      dispatch(setValidStatuses({ input: "photo", isValid: true }));
       setFile(selectedFile.files[0]);
       dispatch(setPhoto(selectedFile.files[0]));
     }
@@ -38,7 +40,13 @@ export default function FileInput() {
       className={`${styles.file_wrapper} ${error.isError ? styles.error : ""}`}
     >
       <label htmlFor="file">Upload</label>
-      <input id="file" type="file" onChange={handleChange} accept="image/*" />
+      <input
+        id="file"
+        type="file"
+        required
+        onChange={handleChange}
+        accept="image/*"
+      />
       <span>{file ? file.name : "Upload your photo"}</span>
       {error.isError && <span className={styles.helper}>{error.text}</span>}
     </div>
