@@ -1,0 +1,47 @@
+@import "../../variables.scss";
+
+.file_wrapper {
+  text-wrap: nowrap;
+  // overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 15px 0;
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  label {
+    cursor: pointer;
+    padding: 15px;
+    border: 1px solid $primary-text-color;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  span {
+    color: $secondary-text-color;
+    margin: 0 15px;
+  }
+
+  .helper {
+    font-family: inherit;
+    position: absolute;
+    left: 0;
+    color: $secondary-text-color;
+    font-size: 12px;
+    line-height: 116.667%;
+    //
+    bottom: -16px;
+    color: $error-color;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.file_wrapper.error {
+  border-color: $error-color;
+  border-width: 2px;
+  label {
+    border-color: $error-color;
+    border-right-width: 2px;
+  }
+}

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-//import { ITableRow } from "./tableSlice";
+import { RootState } from "../store";
 
 export type UserResponse = {
   id: string;
@@ -10,6 +10,11 @@ export type UserResponse = {
   position_id: string;
   registration_timestamp: number;
   photo: string;
+};
+
+type TokenResponse = {
+  success: string;
+  token: string;
 };
 
 export type PositionResponse = {
@@ -41,31 +46,29 @@ export const abzApi = createApi({
   reducerPath: "abzApi",
   baseQuery: fetchBaseQuery({
     baseUrl,
-  }),
-  endpoints: (builder) => ({
-    // addRow: builder.mutation<ITableRow, Omit<ITableRow, "id">>({
-    //   query: (body) => ({
-    //     url: `/table/`,
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       accept: "application/json",
-    //     },
-    //     body,
-    //   }),
-    // }),
 
-    // login: builder.mutation<any, any>({
-    //   query: (bodyData) => ({
-    //     url: "/login/",
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       accept: "application/json",
-    //     },
-    //     body: bodyData,
-    //   }),
-    // }),
+    prepareHeaders: (headers, { getState }) => {
+      const token = (getState() as RootState).form.token;
+      if (token) {
+        headers.set("Token", token);
+      }
+
+      return headers;
+    },
+  }),
+
+  endpoints: (builder) => ({
+    addUser: builder.mutation<any, any>({
+      query: (body) => ({
+        url: "/users",
+        method: "POST",
+        body,
+      }),
+    }),
+
+    getToken: builder.query<TokenResponse, void>({
+      query: () => "/token",
+    }),
 
     getPositions: builder.query<IPositionsResponse, void>({
       query: () => "/positions",
@@ -84,8 +87,8 @@ export const fetchData = async (url: string) => {
 };
 
 export const {
-  //useAddRowMutation,
+  useAddUserMutation,
+  useGetTokenQuery,
   useGetUsersQuery,
-  //useLoginMutation,
   useGetPositionsQuery,
 } = abzApi;

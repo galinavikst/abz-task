@@ -5,6 +5,9 @@ import { styled } from "@mui/material/styles";
 import { FormControl, FormHelperText } from "@mui/material";
 import style from "./form.module.scss";
 import { useMask, type InputMaskProps } from "@react-input/mask";
+import { useAppDispatch, useAppSelector } from "@/app/redux/store";
+import { setInputGroup } from "@/app/redux/features/formSlice";
+import isValid from "./validation.js";
 
 const colors = {
   "primary-accent-color": "#f4e041",
@@ -22,13 +25,23 @@ const colors = {
 
 const CssTextField = styled(TextField)({
   position: "relative",
+
+  // label
+  "& .MuiInputLabel-root": {
+    fontFamily: "inherit",
+    color: colors.secondaryTextColor,
+  },
   "& label.Mui-focused": {
     color: colors.secondaryTextColor,
   },
+  "& label.Mui-error": {
+    color: colors.errorColor,
+  },
 
+  // input
   "& .MuiOutlinedInput-root": {
     color: colors.secondaryTextColor,
-
+    // fieldset
     "& fieldset": {
       border: "1px solid " + colors.borderColor,
     },
@@ -38,24 +51,23 @@ const CssTextField = styled(TextField)({
     "&.Mui-focused fieldset": {
       border: "1px solid " + colors.borderColor,
     },
+    "&.Mui-error fieldset": {
+      border: "2px solid " + colors.errorColor,
+    },
   },
 
   // validation
-  "& input:valid + fieldset": {
-    borderColor: colors.borderColor,
-    borderWidth: 1,
-  },
-  "& input:invalid + fieldset": {
-    borderColor: colors.errorColor,
-    borderWidth: 2,
-  },
+  // "& input:valid + fieldset": {
+  //   borderColor: colors.borderColor,
+  //   borderWidth: 1,
+  // },
 });
 
 type InputProps = {
   type: string;
   name: string;
   label: string;
-  helperText: string;
+  helperText?: string;
 };
 
 export default function CustomTextField({
@@ -65,30 +77,44 @@ export default function CustomTextField({
   label,
 }: InputProps) {
   const inputTeLRef = useMask({
-    mask: "+38 (___) ___-__-__",
+    mask: "+380_________",
     replacement: { _: /\d/ },
   });
 
-  const [tel, setTel] = useState("");
+  const dispatch = useAppDispatch();
+  const [error, setError] = useState({ input: "", text: "" });
 
-  const handleChange = (value: string) => {
-    setTel(value);
+  const values = useAppSelector((state) => state.form.inputGroup);
+
+  const handleChange = (name: string, value: string) => {
+    const errorMessage = isValid[name](value);
+    if (errorMessage) {
+      setError({ input: name, text: errorMessage });
+    } else {
+      setError({ input: "", text: "" });
+    }
+
+    dispatch(setInputGroup({ ...values, [name]: value }));
   };
   return (
     <FormControl>
       <CssTextField
         name={name}
-        inputRef={name === "tel" ? inputTeLRef : null}
+        inputRef={name === "phone" ? inputTeLRef : null}
         type={type}
         label={label}
+        value={values[name]}
+        onChange={(e) => handleChange(name, e.target.value)}
+        error={error.input === name}
+        //required
       />
       <FormHelperText
         classes={{
-          root: style.helper,
+          root: style.helper + (name !== "phone" ? " " + style.error : ""),
         }}
         id={name}
       >
-        {helperText}
+        {name === "phone" ? helperText : error.text}
       </FormHelperText>
     </FormControl>
   );

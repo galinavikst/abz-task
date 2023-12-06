@@ -4,13 +4,13 @@ import { PositionResponse, UserResponse } from "./apiSlice";
 type UserState = {
   users: UserResponse[];
   nextPage: string | null;
-  positions: PositionResponse[];
+  //positions: PositionResponse[];
 };
 
 const initialState: UserState = {
   users: [],
   nextPage: null,
-  positions: [],
+  //positions: [],
 };
 
 const usersSlice = createSlice({
@@ -23,9 +23,9 @@ const usersSlice = createSlice({
     setNextPage(state, action) {
       state.nextPage = action.payload;
     },
-    setPositions(state, action) {
-      state.positions = action.payload;
-    },
+    // setPositions(state, action) {
+    //   state.positions = action.payload;
+    // },
   },
 });
 
