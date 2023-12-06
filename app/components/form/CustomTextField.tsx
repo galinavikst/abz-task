@@ -58,12 +58,6 @@ const CssTextField = styled(TextField)({
       border: "2px solid " + colors.errorColor,
     },
   },
-
-  // validation
-  // "& input:valid + fieldset": {
-  //   borderColor: colors.borderColor,
-  //   borderWidth: 1,
-  // },
 });
 
 type InputProps = {

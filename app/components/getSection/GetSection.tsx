@@ -52,7 +52,9 @@ export default function GetSection() {
         {isLoading ? (
           <Loader />
         ) : (
-          users.map((user: UserResponse) => <Card key={user.id} user={user} />)
+          users.map((user: UserResponse) => (
+            <Card key={user.email} user={user} />
+          ))
         )}
       </ul>
 

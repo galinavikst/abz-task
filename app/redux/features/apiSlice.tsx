@@ -77,6 +77,10 @@ export const abzApi = createApi({
     getUsers: builder.query<IResponse, void>({
       query: () => `/users/?page=1&count=${countByPage}`,
     }),
+
+    getUser: builder.query<any, number | null>({
+      query: (id) => `/users/${id}`,
+    }),
   }),
 });
 
@@ -90,5 +94,6 @@ export const {
   useAddUserMutation,
   useGetTokenQuery,
   useGetUsersQuery,
+  useGetUserQuery,
   useGetPositionsQuery,
 } = abzApi;
