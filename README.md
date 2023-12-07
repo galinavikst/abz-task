@@ -5,7 +5,7 @@
 - Get/Post api requests
 - Form validation
 - Pagination
-- Responsive desing
+- Follow responsive pixel-perfect Figma desing for 360/768/1024/1170 px  
 
 ## Technology Stack
 
