@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./getSection.module.scss";
 import Button from "../button/Button";
 import {
@@ -10,7 +10,7 @@ import {
 import { useAppDispatch, useAppSelector } from "@/app/redux/store";
 import { setNextPage, setUsers } from "@/app/redux/features/usersSlice";
 import Card from "../card/Card";
-import Loader from "../Loader";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function GetSection() {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -48,9 +48,10 @@ export default function GetSection() {
   return (
     <section className={style.getSection}>
       <h2>Working with GET request</h2>
+
       <ul>
         {isLoading ? (
-          <Loader />
+          <CircularProgress size={50} />
         ) : (
           users.map((user: UserResponse) => (
             <Card key={user.email} user={user} />

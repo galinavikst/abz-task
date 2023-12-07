@@ -19,6 +19,7 @@ const CssTextField = styled(TextField)({
   // label
   "& .MuiInputLabel-root": {
     color: colors.secondaryTextColor,
+    fontFamily: colors.fontFamily,
   },
   "& label.Mui-focused": {
     color: colors.secondaryTextColor,

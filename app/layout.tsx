@@ -4,7 +4,7 @@ import "./globals.scss";
 import Header from "./components/header/Header";
 import { Providers } from "./providers";
 
-const inter = Nunito({ subsets: ["latin"] });
+const inter = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
 
 export const metadata: Metadata = {
   title: "ABZ agency test task",
