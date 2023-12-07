@@ -17,7 +17,7 @@ export default function Card({ user }: UserProps) {
   return (
     <li className={style.card}>
       <div>
-        <img src={user.photo} alt="user photo" />
+        <img loading="lazy" src={user.photo} alt="user photo" />
       </div>
 
       <p>{user.name}</p>
