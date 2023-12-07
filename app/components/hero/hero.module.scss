@@ -2,7 +2,7 @@
 
 .hero {
   background-image: url("../../../public/hero.webp");
-  height: calc(100vh - 60px);
+  height: 650px;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -29,6 +29,17 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .hero {
     div {
+      width: 38%;
+    }
+  }
+}
+
+/* Tablet  */
+@media (min-width: 361px) and (max-width: 768px) {
+  .hero {
+    padding: 0;
+    height: 500px;
+    div {
       width: 50%;
     }
   }
@@ -37,8 +48,15 @@
 /* Mobile */
 @media (max-width: 360px) {
   .hero {
+    height: 500px;
+    padding: 40px 15px;
+    display: block;
     div {
       width: 100%;
+      display: block;
+      p {
+        margin: 21px 0 32px;
+      }
     }
   }
 }

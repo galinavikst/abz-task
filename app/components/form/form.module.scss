@@ -1,7 +1,7 @@
 @import "../../variables.scss";
 
 .form {
-  width: 40%;
+  width: 33%;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -37,18 +37,41 @@
   button {
     align-self: center;
   }
+
+  img {
+    width: 100vw;
+  }
+}
+
+/*  Smaller Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .form {
+    gap: 49px;
+    width: 37%;
+    .radio_wrapper {
+      gap: 10px;
+    }
+  }
 }
 
 /* Tablet  */
 @media (min-width: 361px) and (max-width: 768px) {
   .form {
+    gap: 49px;
     width: 50%;
+    .radio_wrapper {
+      gap: 10px;
+    }
   }
 }
 
 /* Mobile */
 @media (max-width: 360px) {
   .form {
+    gap: 45px;
     width: 100%;
+    .radio_wrapper {
+      gap: 10px;
+    }
   }
 }

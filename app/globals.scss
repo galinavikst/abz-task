@@ -35,3 +35,7 @@ input {
   border: 1px solid $border-color;
   border-radius: 4px;
 }
+
+.MuiTooltip-tooltip {
+  background-color: rgba(0, 0, 0, 0.87) !important;
+}

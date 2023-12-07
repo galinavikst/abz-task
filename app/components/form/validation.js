@@ -1,7 +1,7 @@
+////
 // returned Null indicates a valid email
 const isValid = {
   file: (value) => {
-    // return new Promise((resolve, reject) => {
     // Check file type
     if (!value.type.startsWith("image/jp")) {
       return "Please upload a valid image file (jpeg/jpg).";
@@ -21,17 +21,13 @@ const isValid = {
       //Read the contents of Image File.
       reader.readAsDataURL(value);
       reader.onload = function (e) {
-        //Initiate the JavaScript Image object.
         const image = new Image();
-
         //Set the Base64 string return from FileReader as source.
         image.src = e.target.result;
 
-        //Validate the File Height and Width.
         image.onload = () => {
           const width = image.naturalWidth;
           const height = image.naturalHeight;
-          console.log(width, height);
 
           if (height < 70 || width < 70) {
             resolve("Image resolution must be at least 70x70 pixels.");
@@ -39,7 +35,6 @@ const isValid = {
             resolve(null);
           }
         };
-        //image.onerror = reject("Error loading the image.");
       };
     });
 

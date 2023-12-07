@@ -14,7 +14,11 @@ import {
 import { setToken } from "@/app/redux/features/formSlice";
 import { setUsers } from "@/app/redux/features/usersSlice";
 
-export default function Form() {
+type FormProps = {
+  setRegistered: (arg0: boolean) => void;
+};
+
+export default function Form({ setRegistered }: FormProps) {
   const dispatch = useAppDispatch();
   const [newUserId, setNewUserId] = useState(null);
 
@@ -32,6 +36,13 @@ export default function Form() {
     if (newUserData) {
       const updatedUsers = [newUserData.user, ...users].slice(0, 6);
       dispatch(setUsers(updatedUsers));
+      setRegistered(true);
+
+      const timeoutId = setTimeout(() => {
+        setRegistered(false);
+      }, 4000);
+
+      return () => clearTimeout(timeoutId);
     }
   }, [dispatch, newUserData]);
 
@@ -40,23 +51,23 @@ export default function Form() {
     const { email, name, phone } = inputGroup;
 
     if (data) {
-      console.log(data.token);
-
       dispatch(setToken(data.token));
 
-      const formData = new FormData();
-      formData.append("position_id", String(position.id));
-      formData.append("name", name);
-      formData.append("email", email);
-      formData.append("phone", phone);
-      formData.append("photo", photo);
+      try {
+        const formData = new FormData();
+        formData.append("position_id", String(position.id));
+        formData.append("name", name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+        formData.append("photo", photo);
 
-      const res = await addUser(formData).unwrap();
-      console.log(res);
-      if (res.success) {
+        const res = await addUser(formData).unwrap();
+        console.log(res);
         console.log(res.user_id);
 
         setNewUserId(res.user_id);
+      } catch (error: any) {
+        alert(error.data.message);
       }
     }
   };

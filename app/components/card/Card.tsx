@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./card.module.scss";
+import Tooltip from "@mui/material/Tooltip";
 
 type UserData = {
   photo: string;
@@ -23,7 +24,9 @@ export default function Card({ user }: UserProps) {
       <p>{user.name}</p>
       <div>
         <p>{user.position}</p>
-        <p>{user.email}</p>
+        <Tooltip title={user.email}>
+          <p className={style.email}>{user.email}</p>
+        </Tooltip>
         <p>{user.phone}</p>
       </div>
     </li>

@@ -11,27 +11,13 @@ import {
   setValidStatuses,
 } from "@/app/redux/features/formSlice";
 import isValid from "./validation.js";
-
-const colors = {
-  "primary-accent-color": "#f4e041",
-  "hover-btn-color": "#ffe302",
-  "disabled-btn-color": "#b4b4b4",
-  "secondary-accent-color": "#00bdd3",
-  "app-bg-color": "#f8f8f8",
-  "disabled-btn-text-color": "#ffffffde",
-  "pure-white": "#fff",
-  "primary-text-color": "#000000de",
-  secondaryTextColor: "#7e7e7e",
-  borderColor: "#d0cfcf",
-  errorColor: "#cb3d40",
-};
+import colors from "../../colors";
 
 const CssTextField = styled(TextField)({
   position: "relative",
 
   // label
   "& .MuiInputLabel-root": {
-    fontFamily: "inherit",
     color: colors.secondaryTextColor,
   },
   "& label.Mui-focused": {
@@ -105,7 +91,6 @@ export default function CustomTextField({
         value={values[name]}
         onChange={(e) => handleChange(name, e.target.value)}
         error={error.input === name}
-        required
       />
       <FormHelperText
         classes={{

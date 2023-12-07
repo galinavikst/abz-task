@@ -9,6 +9,7 @@
   border-radius: 16px;
   width: 30%;
   flex-grow: 1;
+  height: 254px;
   p {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -17,6 +18,11 @@
     border-radius: 50%;
     width: 70px;
     height: 70px;
+  }
+  .email {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

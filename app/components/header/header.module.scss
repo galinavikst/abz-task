@@ -9,7 +9,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 17px 0;
+  padding: 15px 0;
   div,
   a {
     display: flex;
@@ -23,14 +23,14 @@
 /*  Smaller Desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
   .header {
-    padding: 17px 60px;
+    padding: 13px 60px;
   }
 }
 
 /* Tablet  */
 @media (min-width: 361px) and (max-width: 768px) {
   .header {
-    padding: 17px 32px;
+    padding: 14px 32px;
   }
 }
 

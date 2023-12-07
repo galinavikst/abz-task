@@ -40,13 +40,7 @@ export default function FileInput() {
       className={`${styles.file_wrapper} ${error.isError ? styles.error : ""}`}
     >
       <label htmlFor="file">Upload</label>
-      <input
-        id="file"
-        type="file"
-        required
-        onChange={handleChange}
-        accept="image/*"
-      />
+      <input id="file" type="file" onChange={handleChange} accept="image/*" />
       <span>{file ? file.name : "Upload your photo"}</span>
       {error.isError && <span className={styles.helper}>{error.text}</span>}
     </div>

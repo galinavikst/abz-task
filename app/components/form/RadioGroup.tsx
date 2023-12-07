@@ -1,29 +1,15 @@
 "use client";
 import { useAppDispatch, useAppSelector } from "@/app/redux/store";
 import style from "./form.module.scss";
-import React, { useState, ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import { styled } from "@mui/material/styles";
+import colors from "../../colors";
 import {
   PositionResponse,
   useGetPositionsQuery,
 } from "@/app/redux/features/apiSlice";
-import { setPositions } from "@/app/redux/features/usersSlice";
 import Radio from "@mui/material/Radio";
 import { setPosition } from "@/app/redux/features/formSlice";
-
-const colors = {
-  "primary-accent-color": "#f4e041",
-  "hover-btn-color": "#ffe302",
-  "disabled-btn-color": "#b4b4b4",
-  secondaryAccentColor: "#00bdd3",
-  "app-bg-color": "#f8f8f8",
-  "disabled-btn-text-color": "#ffffffde",
-  "pure-white": "#fff",
-  "primary-text-color": "#000000de",
-  secondaryTextColor: "#7e7e7e",
-  borderColor: "#d0cfcf",
-  errorColor: "#cb3d40",
-};
 
 const CssRadio = styled(Radio)({
   border: "1px solid " + colors.borderColor,
