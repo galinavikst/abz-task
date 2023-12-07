@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# abz-test-task
 
-## Getting Started
+## Features
 
-First, run the development server:
+- Get/Post api requests
+- Form validation
+- Pagination
+- Responsive desing
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technology Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [React](https://reactjs.org/): A JavaScript library for building user interfaces.
+- [Typescript](https://www.typescriptlang.org/): A modern programming language.
+- [Next.js](https://nextjs.org/): A React framework for building server-rendered applications.
+- [MUI](https://mui.com/): A React component library.
+- [Redux Toolkit](https://redux-toolkit.js.org/): A set of tools for efficient Redux development.
+- [SCSS](https://sass-lang.com/): Professional CSS extension language.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository:**
 
-## Learn More
+    ```bash
+    git clone https://github.com/galinavikst/abz-task.git
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Navigate to the project directory:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    ```bash
+    cd abz-task
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Install the dependencies:**
 
-## Deploy on Vercel
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Start the development server:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    ```bash
+    npm run dev
+    ```
+
+5. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to see the app in action.**
+
+
+ ## Deployment
+
+The app is deployed using [Vercel](https://vercel.com/). You can access the deployed version at: [abz-task](https://abz-task-git-main-galinavikst.vercel.app/)
