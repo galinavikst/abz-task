@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { styled } from "@mui/material/styles";
 import { FormControl, FormHelperText } from "@mui/material";
 import style from "./form.module.scss";
-import { useMask, type InputMaskProps } from "@react-input/mask";
+import { useMask } from "@react-input/mask";
 import { useAppDispatch, useAppSelector } from "@/app/redux/store";
 import {
   setInputGroup,
@@ -19,7 +19,6 @@ const CssTextField = styled(TextField)({
   // label
   "& .MuiInputLabel-root": {
     color: colors.secondaryTextColor,
-    fontFamily: colors.fontFamily,
   },
   "& label.Mui-focused": {
     color: colors.secondaryTextColor,
@@ -71,7 +70,9 @@ export default function CustomTextField({
   const values = useAppSelector((state) => state.form.inputGroup);
 
   const handleChange = (name: string, value: string) => {
+    // validation
     const errorMessage = isValid[name](value);
+
     if (errorMessage) {
       setError({ input: name, text: errorMessage });
       dispatch(setValidStatuses({ input: name, isValid: false }));

@@ -46,6 +46,7 @@ export default function Form({ setRegistered }: FormProps) {
     }
   }, [dispatch, newUserData]);
 
+  // post new user
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const { email, name, phone } = inputGroup;
@@ -62,9 +63,6 @@ export default function Form({ setRegistered }: FormProps) {
         formData.append("photo", photo);
 
         const res = await addUser(formData).unwrap();
-        console.log(res);
-        console.log(res.user_id);
-
         setNewUserId(res.user_id);
       } catch (error: any) {
         alert(error.data.message);

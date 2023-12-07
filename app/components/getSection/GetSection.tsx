@@ -19,16 +19,15 @@ export default function GetSection() {
 
   const { data, isLoading } = useGetUsersQuery();
 
+  // init show users
   useEffect(() => {
     if (data) {
-      console.log(data);
-
       dispatch(setUsers(data.users));
       dispatch(setNextPage(data.links.next_url));
     }
   }, [data, dispatch]);
 
-  // handle disable 'show more' btn
+  // handle display none 'show more' btn
   useEffect(() => {
     if (data) {
       if (data.total_users === users.length) {
@@ -37,6 +36,7 @@ export default function GetSection() {
     }
   }, [users.length, data?.total_users]);
 
+  // show next users page
   const handleClick = async () => {
     if (nextPage) {
       const nextData = await fetchData(nextPage);

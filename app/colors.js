@@ -1,7 +1,3 @@
-import { Nunito } from "next/font/google";
-
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
-
 const colors = {
   "primary-accent-color": "#f4e041",
   "hover-btn-color": "#ffe302",
@@ -14,8 +10,6 @@ const colors = {
   secondaryTextColor: "#7e7e7e",
   borderColor: "#d0cfcf",
   errorColor: "#cb3d40",
-  //
-  fontFamily: nunito.variable,
 };
 
 export default colors;

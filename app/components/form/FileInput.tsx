@@ -7,7 +7,6 @@ import { setPhoto, setValidStatuses } from "@/app/redux/features/formSlice";
 
 export default function FileInput() {
   const dispatch = useAppDispatch();
-
   const [file, setFile] = useState<File | any>(null);
   const [error, setError] = useState({ isError: false, text: "" });
 
@@ -18,11 +17,10 @@ export default function FileInput() {
       setFile(null);
       return;
     }
-
+    // file validation
     const errorMessage = await isValid.file(selectedFile.files[0]);
 
     if (errorMessage) {
-      console.log(errorMessage);
       setError({ isError: true, text: errorMessage });
       dispatch(setValidStatuses({ input: "photo", isValid: false }));
       setFile(null);

@@ -1,4 +1,3 @@
-import React from "react";
 import style from "./card.module.scss";
 import Tooltip from "@mui/material/Tooltip";
 

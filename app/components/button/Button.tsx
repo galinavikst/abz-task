@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./buton.module.scss";
 
 type ButtonProps = {
